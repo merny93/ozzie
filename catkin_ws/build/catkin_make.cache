@@ -1,2 +1,2 @@
 
--DCATKIN_DEVEL_PREFIX=/home/raffi/Code/ozzie/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/raffi/Code/ozzie/catkin_ws/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/ozzie/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/ozzie/catkin_ws/install -G Unix Makefiles

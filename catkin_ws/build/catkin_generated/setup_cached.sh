@@ -7,7 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/raffi/Code/ozzie/catkin_ws/devel:$CMAKE_PREFIX_PATH"
-export PWD="/home/raffi/Code/ozzie/catkin_ws/build"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/raffi/Code/ozzie/catkin_ws/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/raffi/Code/ozzie/catkin_ws/src:$ROS_PACKAGE_PATH"
+export CMAKE_PREFIX_PATH="/ozzie/catkin_ws/devel:$CMAKE_PREFIX_PATH"
+export PWD="/ozzie/catkin_ws/build"
+export ROSLISP_PACKAGE_DIRECTORIES="/ozzie/catkin_ws/devel/share/common-lisp"
+export ROS_PACKAGE_PATH="/ozzie/catkin_ws/src:$ROS_PACKAGE_PATH"

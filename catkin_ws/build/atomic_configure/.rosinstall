@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/raffi/Code/ozzie/catkin_ws/devel/setup.sh
+    local-name: /ozzie/catkin_ws/devel/setup.sh
