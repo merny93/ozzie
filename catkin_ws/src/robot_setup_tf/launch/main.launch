@@ -1,0 +1,13 @@
+<launch>
+  <include file="$(find turtlebot3_slam)/launch/turtlebot3_slam.launch">
+  </include>
+
+  <include file="$(find freenect_launch)/launch/freenect.launch">
+  </include>
+
+  <include file="$(find laserscan_kinect)/launch/laserscan.launch">
+  </include>
+
+  <node pkg="robot_setup_tf" type="tf_broadcaster" name="tf_broadcaster">
+  </node>
+</launch>
