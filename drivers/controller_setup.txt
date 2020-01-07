@@ -1,0 +1,7 @@
+Connect both joycons via bluetooth separately
+
+Run https://github.com/riking/joycon
+
+Press zr and zl together
+
+Should listen at that point
