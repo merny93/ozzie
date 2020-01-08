@@ -19,8 +19,8 @@ void moveCallback(const geometry_msgs::Twist& msg){
         std_msgs::Int32MultiArray msg;
         msg.data.clear();
         
+        msg.data.push_back(int(1000*vRight)); // push Right velocity first
         msg.data.push_back(int(1000*vLeft));
-        msg.data.push_back(int(1000*vRight));
 
         move_pub.publish(msg);
     } else {

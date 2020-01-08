@@ -11,7 +11,7 @@ SoftwareSerial Roomba(rxPin, txPin);
  
  
 #include <ros.h>
-#include <std_msgs/String.h>
+#include "std_msgs/Int32MultiArray.h"
  
 
 //include Wire/ twi for the BlinkM
@@ -27,29 +27,15 @@ SoftwareSerial Roomba(rxPin, txPin);
  * third """""" is radius in mm. set to zero for straight and 1 for turn on spot 
  * fourth """" is turn direction (zero for something one for the otherone) 
  */
-void move_cb( const std_msgs::String& move_cmd){
-          int vel;
-          int rad;
-          bool velD, radD ;
-          if (strlen( (const char* ) move_cmd.data) == 4 ){
-              vel = move_cmd.data[0];
-              velD = move_cmd.data[1];
-              rad = move_cmd.data[2];
-              radD = move_cmd.data[3];
-              if (velD) {
-                vel = -vel;
-              }
-              if (radD){
-                rad = -rad;
-              }
-              driveWheels(vel, rad);
-          }
-          
-          //setLED(solid, color);
-  }
+void move_cb( const std_msgs::Int32MultiArray& move_cmd ){
+  int vRight = move_cmd->data[0];
+  int vLeft = move_cmd->data[1];
+  driveWheels(vRight, vLeft);     
+  //setLED(solid, color);
+}
 
 
-ros::NodeHandle  nh;
+ros::NodeHandle nh;
 ros::Subscriber<std_msgs::String> sub("move" , move_cb);
 
 
