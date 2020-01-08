@@ -206,3 +206,6 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(cmd_vel_tf src/cmd_vel_tf.cpp)
+target_link_libraries(cmd_vel_tf ${catkin_LIBRARIES})

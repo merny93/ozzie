@@ -1,6 +1,6 @@
 <launch>
-    <!-- <node pkg="teleop" type="teleop_node.py" name="spawn_teleop_keyboard" output="screen">
-    </node> -->
-    <node pkg="teleop" type="cmd_vel_tf" name="cmd_vel_tf2">
+    <node pkg="teleop" type="teleop_node.py" name="spawn_teleop_keyboard" output="screen">
+    </node>
+    <node pkg="teleop" type="cmd_vel_tf" name="cmd_vel_tf">
     </node>
 </launch>

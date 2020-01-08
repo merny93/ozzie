@@ -1,45 +1,43 @@
 #include <ros/ros.h>
 #include <tf/transform_broadcaster.h>
-#include "std_msgs/String.h"
 #include <nav_msgs/Odometry.h>
-#include <math.h>
+#include <geometry_msgs/Twist.h>
 
-const float DISTANCE_BETWEEN_WHEELS = 0.2; // m
 
 double x = 0.0;
 double y = 0.0;
 double th = 0.0;
 
-ros::Time current_time, last_time;
+double vx = 0.0;
+double vy = 0.0;
+double vth = 0.0;
 
-void poseCallback(const geometry_msgs::Twist& msg){
-    static ros::NodeHandle n;
-    static tf::TransformBroadcaster odom_broadcaster;
-    static ros::Publisher odom_pub = n.advertise<nav_msgs::Odometry>("odom", 50);
+int main(int argc, char** argv){
+  ros::init(argc, argv, "odometry_publisher");
 
+  ros::NodeHandle n;
+  ros::Publisher odom_pub = n.advertise<nav_msgs::Odometry>("odom", 50);
+  tf::TransformBroadcaster odom_broadcaster;
+
+  ros::Time current_time, last_time;
+  current_time = ros::Time::now();
+  last_time = ros::Time::now();
+
+//   ros::Rate r(1.0);
+  while(n.ok()){
+
+    ros::spinOnce();               // check for incoming messages
     current_time = ros::Time::now();
+
+    //compute odometry in a typical way given the velocities of the robot
     double dt = (current_time - last_time).toSec();
+    double delta_x = (vx * cos(th) - vy * sin(th)) * dt;
+    double delta_y = (vx * sin(th) + vy * cos(th)) * dt;
+    double delta_th = vth * dt;
 
-    double linVel = msg.linear.x;
-    double angVel = msg.angular.z;
-
-
-    double vLeft = linVel - angVel; // left wheel
-    double vRight = linVel + angVel; // right wheel
-    double v = (vLeft + vRight)/2;
-    double vx = v*cos(th);
-    double vy = v*sin(th);
-    double vth = (vRight - vLeft) / DISTANCE_BETWEEN_WHEELS;
-    
-    double dx = vx*dt;
-    double dy = vy*dt;
-    double dth = vth*dt;
-
-    x += dx;
-    y += dy;
-    th += dth;
-    // ROS_INFO("x: [%f]", x);
-
+    x += delta_x;
+    y += delta_y;
+    th += delta_th;
 
     //since all odometry is 6DOF we'll need a quaternion created from yaw
     geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(th);
@@ -79,18 +77,6 @@ void poseCallback(const geometry_msgs::Twist& msg){
     odom_pub.publish(odom);
 
     last_time = current_time;
+    // r.sleep();
+  }
 }
-
-int main(int argc, char** argv){
-    ros::init(argc, argv, "cmd_vel_tf");
-
-    ros::NodeHandle node;
-    
-    current_time = ros::Time::now();
-    last_time = ros::Time::now();
-
-    ros::Subscriber sub = node.subscribe("/cmd_vel", 10, &poseCallback);
-
-    ros::spin();
-    return 0;
-};

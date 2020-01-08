@@ -90,7 +90,7 @@ axis_map = []
 button_map = []
 
 # Open the joystick device.
-fn = '/dev/input/js3'
+fn = '/dev/input/js2'
 jsdev = open(fn, 'rb')
 
 # Get the device name.
@@ -187,21 +187,21 @@ if __name__=="__main__":
                     if axis:
                         fvalue = value / 32767.0
                         axis_states[axis] = fvalue
-                if abs(fvalue) > 0.1:
-                        # Left stick up/down
-                        if axis == "rx":
-                            target_linear_vel = TARGET_LIN_VEL * fvalue
-                        # Right stick left/right
-                        elif axis == "ry"
-                            target_angular_vel = TARGET_ANG_VEL * fvalue * -1
-                else:
-                        # Left stick "stop"
-                        if axis == "rx":
-                            target_linear_vel = 0
-                        elif axis == "ry":
-                            target_angular_vel = 0
+                    if abs(fvalue) > 0.1:
+                            # Left stick up/down
+                            if axis == "rx":
+                                target_linear_vel = TARGET_LIN_VEL * fvalue
+                            # Right stick left/right
+                            elif axis == "ry":
+                                target_angular_vel = TARGET_ANG_VEL * fvalue * -1
+                    else:
+                            # Left stick "stop"
+                            if axis == "rx":
+                                target_linear_vel = 0
+                            elif axis == "ry":
+                                target_angular_vel = 0
          
-            print(vels(target_linear_vel, target_angular_vel))
+                # print(vels(target_linear_vel, target_angular_vel))
 
             # if status == 20 :
             #     print(msg)
