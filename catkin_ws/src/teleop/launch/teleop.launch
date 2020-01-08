@@ -3,4 +3,5 @@
     </node>
     <node pkg="teleop" type="cmd_vel_tf" name="cmd_vel_tf">
     </node>
+    <node pkg="control" type="move_broadcaster" name="move_broadcaster"></node>
 </launch>

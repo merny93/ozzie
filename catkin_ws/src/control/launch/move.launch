@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="control" type="move_broadcaster" name="move_broadcaster">
+    </node>
+</launch>
