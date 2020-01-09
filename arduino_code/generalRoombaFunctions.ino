@@ -25,7 +25,7 @@ void startSafe()
   Roomba.write(128);  //Start
   Roomba.write(131);  //Safe mode
   Serial.println("Starting safely");
-  delay(1000);
+  //delay(1000);
 }
 
 /*--------------------------------------------------------------------------
@@ -34,12 +34,12 @@ void startFull()
 {  
   Roomba.write(128);  //Start
   Roomba.write(132);  //Full mode
-  delay(1000);
+  delay(100);
 }
 
 /*--------------------------------------------------------------------------
 This command stops the OI. All streams will stop and the robot will no longer respond to commands. Use this command when you are finished working with the robot. */
-void stop(void)
+void stop()
 {
   Roomba.write(173);
 }
