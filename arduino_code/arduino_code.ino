@@ -28,18 +28,36 @@ SoftwareSerial Roomba(rxPin, txPin);
  * fourth """" is turn direction (zero for something one for the otherone) 
  */
 void move_cb( const std_msgs::Int32MultiArray& move_cmd ){
-  int vRight = move_cmd->data[0];
-  int vLeft = move_cmd->data[1];
+  int vRight = move_cmd.data[0];
+  int vLeft = move_cmd.data[1];
   driveWheels(vRight, vLeft);     
   //setLED(solid, color);
 }
 
 
 ros::NodeHandle nh;
-ros::Subscriber<std_msgs::String> sub("move" , move_cb);
+ros::Subscriber<std_msgs::Int32MultiArray> sub("move" , move_cb);
 
 
 void setup() {
+  delay(2000);
+  pinMode(5, OUTPUT);
+  digitalWrite(5, LOW);
+  delay(60);
+  digitalWrite(5, HIGH);
+  delay(60);
+  pinMode(5, OUTPUT);
+  digitalWrite(5, LOW);
+  delay(60);
+  digitalWrite(5, HIGH);
+  delay(60);
+  pinMode(5, OUTPUT);
+  digitalWrite(5, LOW);
+  delay(60);
+  digitalWrite(5, HIGH);
+  delay(60);
+
+  
   Roomba.begin(19200);
   Serial.begin(19200);
 
@@ -73,19 +91,23 @@ void setup() {
 
   //motorSquareTest();
 
+
+ // stop();
+  
+
   nh.initNode();
   nh.subscribe(sub);
 }
 
 void loop() {
 
-  /*if(Serial.available()){
-    command = Serial.read();
-    Serial.print("Command: " );
-    Serial.println(command);
-  }
-  manualCmd();
-  */
+  //if(!Serial.available()){
+    //stop();
+   // command = Serial.read();
+   // Serial.print("Command: " );
+   // Serial.println(command);
+//  }
+  //manualCmd();
   nh.spinOnce();
   delay(1);
 }
