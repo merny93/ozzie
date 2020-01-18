@@ -1,0 +1,22 @@
+<!-- Launches a .bag file -->
+<launch>
+  <!-- Arguments -->
+  <arg name="file" doc="Uncompressed rosbag file."/>
+
+  <include file="$(find laserscan_kinect)/launch/laserscan.launch">
+  </include>
+
+  <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0 0 0 0 0 0 base_link camera_link 100" ></node>
+  <node pkg="tf" type="static_transform_publisher" name="link2_broadcaster" args="0 0 0 0 0 0 base_link base_footprint 100" ></node>
+  <node pkg="tf" type="static_transform_publisher" name="link3_broadcaster" args="0 0 0 0 0 0 camera_link camera_depth_frame 0.01" ></node>
+
+  <include file="$(find turtlebot3_slam)/launch/turtlebot3_slam.launch">
+  </include>
+
+  <node pkg="teleop" type="movement_to_tf" name="movement_to_tf"> </node>
+  <!-- <node pkg="launching" type="weird_broadcaster" name="weird_broadcaster"> </node> -->
+
+  <node pkg="rosbag" type="play" name="player" output="screen"
+  args="--clock $(arg file)" cwd="node"/> <!-- clock publishes the clock time -->
+
+</launch>

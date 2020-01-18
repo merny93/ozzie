@@ -1,3 +1,5 @@
+// Sends commands to robot
+
 #include <ros/ros.h>
 #include <ros/console.h>
 #include "std_msgs/String.h"

@@ -1,6 +1,8 @@
 // Good link to understand the tf frames:
 // https://www.ros.org/reps/rep-0105.html
 
+// OLD FILE. DO NOT RUN.
+
 /*
 FRAMES ATTACHED TO ROBOT:
 base_footprint -- the bse of the robot at zero height above the ground

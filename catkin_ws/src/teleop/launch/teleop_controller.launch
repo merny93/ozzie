@@ -1,6 +1,7 @@
 <launch>
-    <node pkg="teleop" type="teleop_node.py" name="spawn_teleop_keyboard" output="screen">
+    <node pkg="teleop" type="teleop_controller_node.py" name="spawn_teleop_keyboard" output="screen">
     </node>
+    
     <node pkg="teleop" type="movement_to_tf" name="movement_to_tf">
     </node>
     <node pkg="control" type="move_broadcaster" name="move_broadcaster"></node>

@@ -5,8 +5,8 @@ from geometry_msgs.msg import Twist
 import sys, select, os
 import tty, termios
 
-TARGET_LIN_VEL = 0.5 # m/s
-TARGET_ANG_VEL = 0.5 # m/s 
+TARGET_LIN_VEL = 0.1 # m/s
+TARGET_ANG_VEL = 0.1 # m/s 
 
 msg = """
 Control Ozzie!
@@ -71,10 +71,10 @@ if __name__=="__main__":
                 target_angular_vel = 0.0
             elif key == 'a':
                 target_linear_vel = 0.0
-                target_angular_vel = - TARGET_ANG_VEL
+                target_angular_vel = TARGET_ANG_VEL
             elif key == 'd':
                 target_linear_vel = 0.0
-                target_angular_vel = TARGET_ANG_VEL
+                target_angular_vel = - TARGET_ANG_VEL
                 
             if key != prev_key and key != '':
                 print(vels(target_linear_vel, target_angular_vel))

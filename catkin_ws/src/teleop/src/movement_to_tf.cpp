@@ -1,3 +1,5 @@
+// Converts movement commands into tf transformations (for SLAM)
+
 #include <ros/ros.h>
 #include <tf/transform_broadcaster.h>
 #include "std_msgs/String.h"

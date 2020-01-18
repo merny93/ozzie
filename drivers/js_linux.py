@@ -92,7 +92,7 @@ axis_map = []
 button_map = []
 
 # Open the joystick device.
-fn = '/dev/input/js3'
+fn = '/dev/input/js2'
 print(('Opening %s...' % fn))
 jsdev = open(fn, 'rb')
 
@@ -156,5 +156,5 @@ while True:
             if axis:
                 fvalue = value / 32767.0
                 axis_states[axis] = fvalue
-		if abs(fvalue) > 0.1:
-                  print(("%s: %.1f" % (axis, fvalue)))
+                if abs(fvalue) > 0.1:
+                    print(("%s: %.1f" % (axis, fvalue)))

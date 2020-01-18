@@ -207,5 +207,5 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(cmd_vel_tf src/cmd_vel_tf.cpp)
-target_link_libraries(cmd_vel_tf ${catkin_LIBRARIES})
+add_executable(movement_to_tf src/movement_to_tf.cpp)
+target_link_libraries(movement_to_tf ${catkin_LIBRARIES})
