@@ -1,0 +1,1 @@
+/tf /cmd_vel /odom /camera/depth/image_raw /camera/depth/camera_info /camera/rgb/image_raw /camera_rgb/camera_info

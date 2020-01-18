@@ -206,6 +206,3 @@ include_directories(
 
 add_executable(tf_broadcaster src/tf_broadcaster.cpp)
 target_link_libraries(tf_broadcaster ${catkin_LIBRARIES})
-
-add_executable(weird_broadcaster src/weird_broadcaster.cpp)
-target_link_libraries(weird_broadcaster ${catkin_LIBRARIES})
