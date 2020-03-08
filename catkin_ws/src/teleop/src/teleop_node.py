@@ -6,7 +6,7 @@ import sys, select, os
 import tty, termios
 
 TARGET_LIN_VEL = 0.1 # m/s
-TARGET_ANG_VEL = 0.1 # m/s 
+TARGET_ANG_VEL = 0.03 # m/s 
 
 msg = """
 Control Ozzie!
